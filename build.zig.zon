@@ -36,45 +36,19 @@
     // Once all dependencies are fetched, `zig build` no longer requires
     // internet connectivity.
     .dependencies = .{
-        // See `zig fetch --save <url>` for a command-line interface for adding dependencies.
-        //.example = .{
-        //    // When updating this field to a new URL, be sure to delete the corresponding
-        //    // `hash`, otherwise you are communicating that you expect to find the old hash at
-        //    // the new URL. If the contents of a URL change this will result in a hash mismatch
-        //    // which will prevent zig from using it.
-        //    .url = "https://example.com/foo.tar.gz",
-        //
-        //    // This is computed from the file contents of the directory of files that is
-        //    // obtained after fetching `url` and applying the inclusion rules given by
-        //    // `paths`.
-        //    //
-        //    // This field is the source of truth; packages do not come from a `url`; they
-        //    // come from a `hash`. `url` is just one of many possible mirrors for how to
-        //    // obtain a package matching this `hash`.
-        //    //
-        //    // Uses the [multihash](https://multiformats.io/multihash/) format.
-        //    .hash = "...",
-        //
-        //    // When this is provided, the package is found in a directory relative to the
-        //    // build root. In this case the package's hash is irrelevant and therefore not
-        //    // computed. This field and `url` are mutually exclusive.
-        //    .path = "foo",
-        //
-        //    // When this is set to `true`, a package is declared to be lazily
-        //    // fetched. This makes the dependency only get fetched if it is
-        //    // actually used.
-        //    .lazy = false,
-        //},
+        .partfs = .{
+            .url = "git+https://github.com/Cethannel/partfs.git#a773f2b4e64a61e68bd2c2c27cb648fccbbd051a",
+            .hash = "partfs-0.0.0-PkrTA6dZAAAZhw2y5Jjjru367iIa6fpenc7An1KpeYCG",
+        },
+        .fusefatfs = .{
+            .url = "git+https://github.com/Cethannel/fusefatfs.git#41586237e3c7b5c1f4373bad0c3a25da2f071253",
+            .hash = "fusefatfs-0.0.0-gS82pcmzTQBvI8Pqzt_43mLgTsor6XMv3QjpvUgvh0nc",
+        },
+        .partfs_new = .{
+            .url = "git+https://github.com/Cethannel/partfs_new.git#d8d0e58fe51577a6bf20bcc08c6b56630d9e084b",
+            .hash = "partfs_new-0.0.0-WxMQ-wxaAQDalMT3EOF_Df6wZwd7-x-hkNpa2F9SG33A",
+        },
     },
-
-    // Specifies the set of files and directories that are included in this package.
-    // Only files and directories listed here are included in the `hash` that
-    // is computed for this package. Only files listed here will remain on disk
-    // when using the zig package manager. As a rule of thumb, one should list
-    // files required for compilation plus any license(s).
-    // Paths are relative to the build root. Use the empty string (`""`) to refer to
-    // the build root itself.
-    // A directory listed here means that all files within, recursively, are included.
     .paths = .{
         "build.zig",
         "build.zig.zon",
