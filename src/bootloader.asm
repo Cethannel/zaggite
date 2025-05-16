@@ -74,7 +74,7 @@ end if
     mov word [lba_packet.segment], 0h
     mov word [lba_packet.offset], 0800h
 
-    mov word [lba_packet.sector0], 89    ; dword (lower 32-bits of the sector num) [sector0][sector1]
+    mov word [lba_packet.sector0], 85    ; dword (lower 32-bits of the sector num) [sector0][sector1]
     mov word [lba_packet.sector1], 0
     mov word [lba_packet.sector2], 0
     mov word [lba_packet.sector3], 0
@@ -140,6 +140,7 @@ lba_not_found:  db "Hard drive doesnt support LBA packet struct",0
 not_hdd:  db "Not a valid harddrive",0
 sector_read_error:  db "Couldn't read sector from drive",0
 invalid_magic:  db "Sector doesnt start with the expected magic bytes",0
+successfully_booted: db "Found magic. Booting...",0
 
 ; padding and boot signature
 pad:            db 510 - ($ - $$) dup 0

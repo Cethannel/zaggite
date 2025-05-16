@@ -41,7 +41,7 @@ pub fn main() !void {
         }
 
         if (data[0] == 0xF4 and data[1] == 0x1C) {
-            std.debug.print("Found MAGIC_BYTES @ sector {}", .{sec});
+            std.debug.print("Found MAGIC_BYTES @ sector {}\n", .{sec});
             second_stage_sector = sec;
             break;
         }
